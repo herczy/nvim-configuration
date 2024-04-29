@@ -39,15 +39,10 @@ return {
 	"mfussenegger/nvim-dap-python",
 	{
 		"mfussenegger/nvim-dap",
-		dependencies = { "rcarriga/nvim-dap-ui", "mfussenegger/nvim-dap-python" },
+		dependencies = { "rcarriga/nvim-dap-ui" },
 		config = function()
 			local dap = require("dap")
 			local which_key = require("which-key")
-
-			local dap_py = require("dap-python")
-
-			dap_py.setup("~/miniconda3/bin/python3")
-			dap_py.test_runner = "pytest"
 
 			which_key.register({
 				d = {
