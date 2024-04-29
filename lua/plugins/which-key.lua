@@ -5,6 +5,11 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
+  setup = function()
+    local which_key = require('which-key')
+
+    which_key.register({ 'Go to' }, { prefix="g" })
+  end,
   opts = {
     -- your configuration comes here
     -- or leave it empty to use the default settings

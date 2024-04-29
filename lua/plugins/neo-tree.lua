@@ -7,6 +7,6 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    vim.keymap.set('n', '<F4>', ':Neotree filesystem reveal toggle left<cr>', { desc = 'Open filesystem tree' });
+    vim.keymap.set('n', '<F4>', ':Neotree filesystem reveal left<cr>', { desc = 'Open filesystem tree' });
   end
 }
