@@ -13,4 +13,4 @@ vim.cmd("set nohlsearch")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.keymap.set('n', '<leader>R', ':source ~/.config/nvim/init.lua<cr>', { desc = "Reload configuration" })
+vim.keymap.set("n", "<leader>R", ":source ~/.config/nvim/init.lua<cr>", { desc = "Reload configuration" })
