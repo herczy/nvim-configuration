@@ -54,7 +54,7 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local config = require("lspconfig")
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			config.lua_ls.setup({ capabilities = capabilities })
 			config.pyright.setup({ capabilities = capabilities })
@@ -65,5 +65,20 @@ return {
 			})
 		end,
 		dependencies = { "folke/which-key.nvim" },
+	},
+	{
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({})
+			require("lspconfig").lua_ls.setup({
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
+					},
+				},
+			})
+		end,
 	},
 }

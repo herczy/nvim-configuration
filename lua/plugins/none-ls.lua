@@ -6,9 +6,9 @@ return {
 		nl.setup({
 			sources = {
 				nl.builtins.formatting.stylua,
-        nl.builtins.formatting.black,
-        nl.builtins.formatting.isort,
-        nl.builtins.diagnostics.mypy,
+				nl.builtins.formatting.black,
+				nl.builtins.formatting.isort,
+				nl.builtins.diagnostics.mypy,
 			},
 		})
 	end,
