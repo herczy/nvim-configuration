@@ -25,7 +25,7 @@ function setupKeymaps(ev)
 		},
 		D = { vim.lsp.buf.type_definition, "Type definitions" },
 		r = {
-			n = { vim.lsp.buf.type_definition, "Rename" },
+			n = { vim.lsp.buf.rename, "Rename" },
 		},
 		c = { a = { vim.lsp.buf.code_action, "Code actions" } },
 		f = { m = { vim.lsp.buf.format, "Format code" } },
