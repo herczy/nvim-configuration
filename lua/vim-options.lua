@@ -10,6 +10,7 @@ vim.cmd("set nu")
 vim.cmd("set ml")
 vim.cmd("set fo=ro")
 vim.cmd("set nohlsearch")
+vim.cmd("set signcolumn=yes")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
