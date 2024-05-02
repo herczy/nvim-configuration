@@ -1,0 +1,14 @@
+{
+  "read-only property": {
+    "prefix": "prop",
+    "body": "@property\ndef ${1:foo}(self):\n    return ${3:self._$1}"
+  },
+  "settable property": {
+    "prefix": "props",
+    "body": "@property\ndef ${1:foo}(self):\n    return ${3:self._$1}\n@${4:$1}.setter\ndef ${5:$1}(self, value):\n    self.${6:_$1} = value"
+  },
+  "settable property": {
+    "prefix": "propsd",
+    "body": "@property\ndef ${1:foo}(self):\n    return ${3:self._$1}\n@${4:$1}.setter\ndef ${5:$1}(self, value):\n    self.${6:_$1} = value\n@${7:$1}.deleter\ndef ${8:$1}(self):\n    del self.${9:_$1}\n"
+    }
+}

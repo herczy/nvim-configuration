@@ -8,13 +8,26 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
+		config = function()
+			local ls = require("luasnip")
+
+			vim.keymap.set("i", "<C-L>", function()
+				ls.jump(1)
+			end, { silent = true })
+			vim.keymap.set("i", "<C-H>", function()
+				ls.jump(-1)
+			end, { silent = true })
+		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			-- Set up nvim-cmp.
 			local cmp = require("cmp")
-			require("luasnip.loaders.from_vscode").lazy_load()
+			local vs = require("luasnip.loaders.from_vscode")
+
+			vs.lazy_load()
+			vs.lazy_load({ paths = { vim.fn.stdpath("config") .. '/snippets/' } })
 
 			function smartTab()
 				local win = vim.api.nvim_get_current_win()
