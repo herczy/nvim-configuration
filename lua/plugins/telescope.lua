@@ -15,8 +15,7 @@ return {
 					g = { builtin.live_grep, "Live grep" },
 					b = { builtin.buffers, "Buffers" },
 					h = { builtin.help_tags, "Help" },
-					m = { builtin.man_pages, "Man pages" },
-					t = { builtin.tags, "Tags" },
+					k = { builtin.man_pages, "Man pages" },
 				},
 			}, { prefix = "<leader>" })
 		end,
