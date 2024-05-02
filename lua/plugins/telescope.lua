@@ -10,17 +10,15 @@ return {
 			which_key.register({
 				f = {
 					"Fuzzy finder",
+					v = { builtin.treesitter, "Find entities" },
 					f = { builtin.find_files, "Find files" },
 					g = { builtin.live_grep, "Live grep" },
 					b = { builtin.buffers, "Buffers" },
 					h = { builtin.help_tags, "Help" },
+					m = { builtin.man_pages, "Man pages" },
+					t = { builtin.tags, "Tags" },
 				},
 			}, { prefix = "<leader>" })
-
-			--       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
-			--       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
-			--       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
-			--       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help with preview' })
 		end,
 	},
 	{
@@ -32,20 +30,6 @@ return {
 						require("telescope.themes").get_dropdown({
 							-- even more opts
 						}),
-
-						-- pseudo code / specification for writing custom displays, like the one
-						-- for "codeactions"
-						-- specific_opts = {
-						--   [kind] = {
-						--     make_indexed = function(items) -> indexed_items, width,
-						--     make_displayer = function(widths) -> displayer
-						--     make_display = function(displayer) -> function(e)
-						--     make_ordinal = function(e) -> string
-						--   },
-						--   -- for example to disable the custom builtin "codeactions" display
-						--      do the following
-						--   codeactions = false,
-						-- }
 					},
 				},
 			})
