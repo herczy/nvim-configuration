@@ -27,7 +27,7 @@ return {
 			local vs = require("luasnip.loaders.from_vscode")
 
 			vs.lazy_load()
-			vs.lazy_load({ paths = { vim.fn.stdpath("config") .. '/snippets/' } })
+			vs.lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets/" } })
 
 			function smartTab()
 				local win = vim.api.nvim_get_current_win()
@@ -39,10 +39,10 @@ return {
 					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<tab>", true, true, true), "n", false)
 				else
 					cmp.complete()
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-          if #cmp.get_entries() == 1 then
-            cmp.confirm({ sleect = true })
-          end
+					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					if #cmp.get_entries() == 1 then
+						cmp.confirm({ sleect = true })
+					end
 				end
 			end
 
