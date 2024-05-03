@@ -29,7 +29,7 @@ return {
 			vs.lazy_load()
 			vs.lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets/" } })
 
-			function smartTab()
+			vim.keymap.set("i", "<TAB>", function()
 				local win = vim.api.nvim_get_current_win()
 				local _, col = unpack(vim.api.nvim_win_get_cursor(win))
 				local line = vim.api.nvim_get_current_line()
@@ -41,12 +41,17 @@ return {
 					cmp.complete()
 					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 					if #cmp.get_entries() == 1 then
-						cmp.confirm({ sleect = true })
+						cmp.confirm({
+							select = true,
+							config = {
+								sources = {
+									{ name = "nvim_lsp" },
+								},
+							},
+						})
 					end
 				end
-			end
-
-			vim.keymap.set("i", "<TAB>", smartTab, {})
+			end, {})
 
 			cmp.setup({
 				snippet = {
