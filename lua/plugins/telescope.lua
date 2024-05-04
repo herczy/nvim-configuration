@@ -11,12 +11,12 @@ return {
 				f = {
 					"Fuzzy finder",
 					v = { builtin.treesitter, "Find entities" },
-					f = { builtin.find_files, "Find files" },
 					g = { builtin.live_grep, "Live grep" },
 					b = { builtin.buffers, "Buffers" },
 					h = { builtin.help_tags, "Help" },
 					k = { builtin.man_pages, "Man pages" },
 				},
+				["<leader>"] = { builtin.find_files, "Find files" },
 			}, { prefix = "<leader>" })
 		end,
 	},
