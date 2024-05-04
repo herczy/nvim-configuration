@@ -6,6 +6,7 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-neotest/neotest-python",
+		"lawrence-laz/neotest-zig",
 	},
 	config = function()
 		local adapters = {
@@ -16,6 +17,7 @@ return {
 				python = "python",
 				pytest_discover_instances = true,
 			}),
+			-- require("neotest-zig"),
 		}
 		local neotest = require("neotest")
 		local which_key = require("which-key")
