@@ -15,7 +15,7 @@ return {
 				dap = { justMyCode = false },
 				-- Command line arguments for runner
 				-- Can also be a function to return dynamic values
-				args = { "--log-level", "DEBUG" },
+				args = { "--log-level", "DEBUG", "-vv" },
 				-- Runner to use. Will use pytest if available by default.
 				-- Can be a function to return dynamic value.
 				runner = "pytest",
@@ -47,13 +47,23 @@ return {
 					neotest.summary.toggle,
 					"Toggle summary",
 				},
+				r = {
+					neotest.run.run,
+					"Run nearest tests",
+				},
+				d = {
+					function()
+						neotest.run.run({ strategy = "dap" })
+					end,
+					"Debug nearest tests",
+				},
+				O = {
+					neotest.output.open,
+					"Open output",
+				},
 				o = {
 					neotest.output_panel.open,
 					"Open output panel",
-				},
-				r = {
-					neotest.output.open,
-					"Open output",
 				},
 			},
 		}, { prefix = "<leader>" })
