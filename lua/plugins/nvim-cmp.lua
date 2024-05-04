@@ -11,10 +11,10 @@ return {
 		config = function()
 			local ls = require("luasnip")
 
-			vim.keymap.set("i", "<C-L>", function()
+			vim.keymap.set("i", "<C-l>", function()
 				ls.jump(1)
 			end, { silent = true })
-			vim.keymap.set("i", "<C-H>", function()
+			vim.keymap.set("i", "<C-h>", function()
 				ls.jump(-1)
 			end, { silent = true })
 		end,
@@ -38,23 +38,26 @@ return {
 				if ch:len() == 0 or ch:match("%s") then
 					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<tab>", true, true, true), "n", false)
 				else
-					cmp.complete()
+					cmp.complete({
+						config = {
+							sources = {
+								{ name = "nvim_lsp" },
+							},
+						},
+					})
 					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 					if #cmp.get_entries() == 1 then
-						cmp.confirm({
-							select = true,
-							config = {
-								sources = {
-									{ name = "nvim_lsp" },
-								},
-							},
-						})
+						cmp.confirm({ select = true })
 					end
 				end
 			end, {})
 
 			vim.keymap.set("i", "<C-Space>", function()
-				cmp.complete()
+				cmp.complete({
+					sources = {
+						{ name = "luasnip" },
+					},
+				})
 				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 				if #cmp.get_entries() == 1 then
 					cmp.confirm({ select = true })
