@@ -43,6 +43,11 @@ return {
 							sources = {
 								{ name = "nvim_lsp" },
 							},
+							matching = {
+								disallow_fuzzy_matching = true,
+								disallow_partial_matching = true,
+								disallow_prefix_unmatching = true,
+							},
 						},
 					})
 					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -53,11 +58,7 @@ return {
 			end, {})
 
 			vim.keymap.set("i", "<C-Space>", function()
-				cmp.complete({
-					sources = {
-						{ name = "luasnip" },
-					},
-				})
+				cmp.complete()
 				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 				if #cmp.get_entries() == 1 then
 					cmp.confirm({ select = true })
