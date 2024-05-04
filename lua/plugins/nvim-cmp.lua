@@ -35,7 +35,7 @@ return {
 				local line = vim.api.nvim_get_current_line()
 				local ch = line:sub(col, col + 1)
 
-				if ch:len() == 0 or ch:match("^[%s.]$") then
+				if ch:len() == 0 or ch:match("%s") then
 					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<tab>", true, true, true), "n", false)
 				else
 					cmp.complete()
@@ -50,6 +50,14 @@ return {
 							},
 						})
 					end
+				end
+			end, {})
+
+			vim.keymap.set("i", "<C-Space>", function()
+				cmp.complete()
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+				if #cmp.get_entries() == 1 then
+					cmp.confirm({ select = true })
 				end
 			end, {})
 
@@ -71,7 +79,6 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
 					["<esc>"] = cmp.mapping.abort(),
 					-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
