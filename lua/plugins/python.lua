@@ -13,4 +13,11 @@ return {
 		"kmontocam/nvim-conda",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+	{
+		"mfussenegger/nvim-dap-python",
+		{
+			"mfussenegger/nvim-dap",
+			dependencies = { "rcarriga/nvim-dap-ui" },
+		},
+	},
 }
