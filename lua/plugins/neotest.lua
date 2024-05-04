@@ -42,18 +42,18 @@ return {
 
 		which_key.register({
 			t = {
-				"Testing",
-				r = {
-					function()
-						neotest.run.run(vim.fn.expand("%"))
-					end,
-					"Run all",
+				"Test execution",
+				t = {
+					neotest.summary.toggle,
+					"Toggle summary",
 				},
-				d = {
-					function()
-						neotest.run.run({ vim.fn.expand("%"), strategy = "dap" })
-					end,
-					"Debug all",
+				o = {
+					neotest.output_panel.open,
+					"Open output panel",
+				},
+				r = {
+					neotest.output.open,
+					"Open output",
 				},
 			},
 		}, { prefix = "<leader>" })
