@@ -6,17 +6,20 @@ return {
 		local which_key = require("which-key")
 
 		which_key.register({
-			d = {
-				"Debugger",
-				t = { dap.toggle_breakpoint, "Toggle breakpoint" },
-				c = { dap.continue, "Continue" },
-				r = { dap.run_to_cursor, "Run to cursor" },
+			b = {
+				"Breakpoints",
+				t = { dap.toggle_breakpoint, "Toggle" },
+				c = { dap.clear_breakpoints, "Clear" },
 			},
 		}, { prefix = "<leader>" })
-		vim.keymap.set("n", "<F7>", dap.step_into, { desc = "Step Into" })
-		vim.keymap.set("n", "<F8>", dap.step_over, { desc = "Step Over" })
+
+		vim.keymap.set("n", "<F7>", dap.step_into, { desc = "(debug) Step Into" })
+		vim.keymap.set("n", "<F8>", dap.step_over, { desc = "(debug) Step Over" })
+		vim.keymap.set("n", "<F9>", dap.continue, { desc = "(debug) Start / Continue" })
+		vim.keymap.set("n", "<C-x>", vim.cmd.DapTerminate, { desc = "(debug) Terminate" })
 
 		local dapui = require("dapui")
+		---@diagnostic disable: missing-fields
 		dapui.setup({
 			icons = {
 				expanded = "⯆",
