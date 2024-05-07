@@ -56,7 +56,6 @@ return {
 			local config = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			config.lua_ls.setup({ capabilities = capabilities })
 			config.pyright.setup({ capabilities = capabilities })
 
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -70,7 +69,9 @@ return {
 		"folke/neodev.nvim",
 		config = function()
 			require("neodev").setup({})
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			require("lspconfig").lua_ls.setup({
+				capabilities = capabilities,
 				settings = {
 					Lua = {
 						completion = {
