@@ -15,5 +15,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", { change_detection = { enabled = false, notify = false } })
 require("additional-bindings")
