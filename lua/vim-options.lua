@@ -11,6 +11,8 @@ vim.cmd("set ml")
 vim.cmd("set fo=ro")
 vim.cmd("set nohlsearch")
 vim.cmd("set signcolumn=yes")
+vim.cmd("set scrolloff=10")
+vim.cmd("set mouse=")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
