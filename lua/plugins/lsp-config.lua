@@ -12,22 +12,8 @@ function setupKeymaps(ev)
 	}, { prefix = "g", buffer = ev.buf })
 
 	which_key.register({
-		w = {
-			"Workspace",
-			a = { vim.lsp.buf.add_workspace_folder, "Add workspace folder" },
-			r = { vim.lsp.buf.remove_workspace_folder, "Remove workspace folder" },
-			l = {
-				function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end,
-				"List workspace folders",
-			},
-		},
 		D = { vim.lsp.buf.type_definition, "Type definitions" },
-		r = {
-			n = { vim.lsp.buf.rename, "Rename" },
-		},
-		c = { a = { vim.lsp.buf.code_action, "Code actions" } },
+		r = { vim.lsp.buf.rename, "Rename" },
 		f = { m = { vim.lsp.buf.format, "Format code" } },
 	}, { prefix = "<leader>", buffer = ev.buf })
 
