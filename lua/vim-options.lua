@@ -19,3 +19,6 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "<leader>R", ":source ~/.config/nvim/init.lua<cr>", { desc = "Reload configuration" })
 vim.keymap.set("i", "<C-Down>", "<esc>o", { desc = "Insert line below" })
 vim.keymap.set("i", "<C-Up>", "<esc>O", { desc = "Insert line below" })
+vim.keymap.set("n", "<leader>?", function()
+  vim.diagnostic.open_float({ border = "single" })
+end, { desc = "Show error details" })
