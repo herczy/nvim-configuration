@@ -22,58 +22,16 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		config = function()
-			-- Set up nvim-cmp.
 			local cmp = require("cmp")
 			local vs = require("luasnip.loaders.from_vscode")
 
 			vs.lazy_load()
 			vs.lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets/" } })
 
-			vim.keymap.set("i", "<TAB>", function()
-				local win = vim.api.nvim_get_current_win()
-				local _, col = unpack(vim.api.nvim_win_get_cursor(win))
-				local line = vim.api.nvim_get_current_line()
-				local ch = line:sub(col, col + 1)
-
-				if ch:len() == 0 or ch:match("%s") then
-					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<tab>", true, true, true), "n", false)
-				else
-					cmp.complete({
-						config = {
-							sources = {
-								{ name = "nvim_lsp" },
-							},
-							matching = {
-								disallow_fuzzy_matching = true,
-								disallow_partial_matching = true,
-								disallow_prefix_unmatching = true,
-							},
-						},
-					})
-					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-					if #cmp.get_entries() == 1 then
-						cmp.confirm({ select = true })
-					end
-				end
-			end, {})
-
-			vim.keymap.set("i", "<C-Space>", function()
-				cmp.complete()
-				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-				if #cmp.get_entries() == 1 then
-					cmp.confirm({ select = true })
-				end
-			end, {})
-
 			cmp.setup({
 				snippet = {
-					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
-						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-						-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-						-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
 					end,
 				},
 				window = {
@@ -83,24 +41,23 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<esc>"] = cmp.mapping.abort(),
+					["<esc>"] = function()
+						-- Escape should emulate default escape behavior.
+						cmp.mapping.abort()
+						vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, true, true), "n", false)
+					end,
 					-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					["<TAB>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 					["<S-TAB>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					-- { name = 'vsnip' }, -- For vsnip users.
-					{ name = "luasnip" }, -- For luasnip users.
-					-- { name = 'ultisnips' }, -- For ultisnips users.
-					-- { name = 'snippy' }, -- For snippy users.
-				}, {
-					{ name = "buffer" },
+					{ name = "nvim_lsp", group_index = 1 },
+					{ name = "luasnip", group_index = 2 },
+					{ name = "buffer", group_index = 3 },
 				}),
 				completion = {
 					keyword_length = 3,
-					autocomplete = false,
 				},
 			})
 		end,
