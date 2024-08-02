@@ -16,27 +16,17 @@ return {
 			numhl = true,
 		})
 
-		which_key.register({
-			g = {
-				"Git commands",
-				["0"] = { gs.detach, "Disable for buffer" },
-				["1"] = { gs.attach, "Enable for buffer" },
-				D = { gs.diffthis, "Diff" },
-				B = { gs.blame_line, "Blame line" },
-				n = { gs.next_hunk, "Next hunk" },
-				s = { gs.stage_hunk, "Stage hunk" },
-				u = { gs.undo_stage_hunk, "Undo last staged" },
-				d = { gs.toggle_deleted, "Show deleted lines" },
-				w = { gs.toggle_word_diff, "Show word diff" },
-			},
-		}, { prefix = "<leader>" })
-
-		which_key.register({
-			h = {
-				"Hunk",
-				j = { gs.next_hunk, "Next" },
-				k = { gs.prev_hunk, "Prev" },
-			},
-		}, { prefix = "g" })
+		which_key.add({
+			{ "<leader>g", desc = "Git commands" },
+			{ "<leader>g0", gs.detach, desc = "Disable git for buffer" },
+			{ "<leader>g1", gs.attach, desc = "Enable git for buffer" },
+			{ "<leader>gD", gs.diffthis, desc = "Git diff for buffer" },
+			{ "<leader>gs", gs.stage_hunk, desc = "Stage current hunk" },
+			{ "<leader>gu", gs.undo_stage_hunk, desc = "Unstage current hunk" },
+			{ "<leader>gd", gs.toggle_deleted, desc = "Show deleted lines" },
+			{ "<leader>gw", gs.toggle_word_diff, desc = "Show word diff" },
+			{ "gj", gs.next_hunk, desc = "Go to next hunk" },
+			{ "gk", gs.prev_hunk, desc = "Go to previous hunk" },
+		})
 	end,
 }

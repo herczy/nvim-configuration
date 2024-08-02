@@ -41,6 +41,7 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-x>"] = cmp.mapping.abort,
 					["<esc>"] = function()
 						-- Escape should emulate default escape behavior.
 						cmp.mapping.abort()

@@ -5,13 +5,11 @@ return {
 		local dap = require("dap")
 		local which_key = require("which-key")
 
-		which_key.register({
-			b = {
-				"Breakpoints",
-				t = { dap.toggle_breakpoint, "Toggle" },
-				c = { dap.clear_breakpoints, "Clear" },
-			},
-		}, { prefix = "<leader>" })
+		which_key.add({
+			{ "<leader>b", desc = "Breakpoints" },
+			{ "<leader>bt", dap.toggle_breakpoint, desc = "Toggle breakpoint" },
+			{ "<leader>bc", dap.clear_breakpoints, desc = "Clear all breakpoints" },
+		})
 
 		vim.keymap.set("n", "<F7>", dap.step_into, { desc = "(debug) Step Into" })
 		vim.keymap.set("n", "<F8>", dap.step_over, { desc = "(debug) Step Over" })

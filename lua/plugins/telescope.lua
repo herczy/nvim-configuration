@@ -7,17 +7,15 @@ return {
 			local builtin = require("telescope.builtin")
 			local which_key = require("which-key")
 
-			which_key.register({
-				f = {
-					"Fuzzy finder",
-					v = { builtin.treesitter, "Find entities" },
-					g = { builtin.live_grep, "Live grep" },
-					b = { builtin.buffers, "Buffers" },
-					h = { builtin.help_tags, "Help" },
-					k = { builtin.man_pages, "Man pages" },
-				},
-				["<leader>"] = { builtin.find_files, "Find files" },
-			}, { prefix = "<leader>" })
+			which_key.add({
+				{ "<leader>f", desc = "Fuzzy finder" },
+				{ "<leader>fv", builtin.treesitter, desc = "Find entities" },
+				{ "<leader>fg", builtin.live_grep, desc = "Live grep" },
+				{ "<leader>fb", builtin.buffers, desc = "Buffers" },
+				{ "<leader>fh", builtin.help_tags, desc = "Help" },
+				{ "<leader>fk", builtin.man_pages, desc = "Man pages" },
+				{ "<leader><leader>", builtin.find_files, desc = "Find files" },
+			})
 		end,
 	},
 	{

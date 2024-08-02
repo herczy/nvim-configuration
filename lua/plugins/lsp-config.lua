@@ -4,18 +4,15 @@ function setupKeymaps(ev)
 
 	local which_key = require("which-key")
 
-	which_key.register({
-		D = { vim.lsp.buf.declaration, "Declaration" },
-		d = { vim.lsp.buf.definition, "Definition" },
-		i = { vim.lsp.buf.implementation, "Implementation" },
-		r = { vim.lsp.buf.references, "References" },
-	}, { prefix = "g", buffer = ev.buf })
-
-	which_key.register({
-		D = { vim.lsp.buf.type_definition, "Type definitions" },
-		r = { vim.lsp.buf.rename, "Rename" },
-		f = { m = { vim.lsp.buf.format, "Format code" } },
-	}, { prefix = "<leader>", buffer = ev.buf })
+	which_key.add({
+		{ "gD", vim.lsp.buf.declaration, desc = "Declaration" },
+		{ "gd", vim.lsp.buf.definition, desc = "Definition" },
+		{ "gi", vim.lsp.buf.implementation, desc = "Implementation" },
+		{ "gr", vim.lsp.buf.references, desc = "References" },
+		{ "<leader>D", vim.lsp.buf.type_definition, desc = "Type definitions" },
+		{ "<leader>r", vim.lsp.buf.rename, desc = "Rename" },
+		{ "<leader>fm", vim.lsp.buf.format, desc = "Format code" },
+	}, { buffer = ev.buf })
 
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buffer, desc = "show hover" })
 	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = ev.buffer, desc = "signature help" })

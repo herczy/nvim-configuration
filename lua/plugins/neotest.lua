@@ -22,32 +22,19 @@ return {
 
 		neotest.setup({ adapters = adapters })
 
-		which_key.register({
-			t = {
-				"Test execution",
-				t = {
-					neotest.summary.toggle,
-					"Toggle summary",
-				},
-				r = {
-					neotest.run.run,
-					"Run nearest tests",
-				},
-				d = {
-					function()
-						neotest.run.run({ strategy = "dap" })
-					end,
-					"Debug nearest tests",
-				},
-				O = {
-					neotest.output.open,
-					"Open output",
-				},
-				o = {
-					neotest.output_panel.open,
-					"Open output panel",
-				},
+		which_key.add({
+			{ "<leader>t", desc = "Test execution" },
+			{ "<leader>tt", neotest.summary.toggle, desc = "Toggle summary" },
+			{ "<leader>tr", neotest.run.run, desc = "Run nearest tests" },
+			{
+				"<leader>td",
+				function()
+					neotest.run.run({ strategy = "dap" })
+				end,
+				desc = "Debug nearest tests",
 			},
-		}, { prefix = "<leader>" })
+			{ "<leader>tO", neotest.output.open, desc = "Open output" },
+			{ "<leader>to", neotest.output_panel.open, desc = "Open output panel" },
+		})
 	end,
 }
