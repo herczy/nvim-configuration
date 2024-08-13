@@ -7,6 +7,17 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		vim.keymap.set("n", "<F4>", ":Neotree filesystem reveal left<cr>", { desc = "Open filesystem tree" })
+		local wk = require("which-key")
+		local ntc = require("neo-tree.command")
+		wk.add({
+			{
+				"<leader>nt",
+				function()
+					ntc.execute({})
+				end,
+				desc = "Open filesystem tree",
+			},
+			{ "<leader>n", desc = "Neotree commands" },
+		})
 	end,
 }
