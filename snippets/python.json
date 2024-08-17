@@ -1,18 +1,22 @@
 {
   "read-only property": {
     "prefix": "prop",
-    "body": "@property\ndef ${1:foo}(self):\n    return ${3:self._$1}"
+    "body": "@property\ndef ${1:foo}(self) -> ${2:Any}:\n    return ${3:self._$1}"
   },
   "settable property": {
     "prefix": "props",
-    "body": "@property\ndef ${1:foo}(self):\n    return ${3:self._$1}\n@${4:$1}.setter\ndef ${5:$1}(self, value):\n    self.${6:_$1} = value"
+    "body": "@property\ndef ${1:foo}(self) -> ${2:Any}:\n    return ${3:self._$1}\n@${4:$1}.setter\ndef ${5:$1}(self, value: ${2:Any}) -> None:\n    self.${6:_$1} = value"
   },
-  "settable property": {
+  "settable and deletable property": {
     "prefix": "propsd",
-    "body": "@property\ndef ${1:foo}(self):\n    return ${3:self._$1}\n@${4:$1}.setter\ndef ${5:$1}(self, value):\n    self.${6:_$1} = value\n@${7:$1}.deleter\ndef ${8:$1}(self):\n    del self.${9:_$1}\n"
+    "body": "@property\ndef ${1:foo}(self) -> ${2:Any}:\n    return ${3:self._$1}\n@${4:$1}.setter\ndef ${5:$1}(self, value: ${2:any}) -> None:\n    self.${6:_$1} = value\n@${7:$1}.deleter\ndef ${8:$1}(self) -> None:\n    del self.${9:_$1}\n"
   },
   "typevar": {
     "prefix": "typevar",
     "body": "${1:T} = TypeVar(\"${2:$1}\")"
+  },
+  "paramspec": {
+    "prefix": "paramspec",
+    "body": "${1:P} = ParamSpec(\"${2:$1}\")"
   }
 }
