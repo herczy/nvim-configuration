@@ -5,14 +5,22 @@ return {
 		local which_key = require("which-key")
 
 		gs.setup({
-			signs = {
+      signs = {
 				add = { text = "+" },
 				change = { text = "»" },
 				delete = { text = "-" },
 				topdelete = { text = "‾" },
 				changedelete = { text = "±" },
 				untracked = { text = "?" },
-			},
+      },
+      signs_staged = {
+				add = { text = "S+" },
+				change = { text = "S»" },
+				delete = { text = "S-" },
+				topdelete = { text = "S‾" },
+				changedelete = { text = "S±" },
+				untracked = { text = "S?" },
+      },
 			numhl = true,
 		})
 
