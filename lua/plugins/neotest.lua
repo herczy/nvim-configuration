@@ -20,7 +20,7 @@ return {
 		local neotest = require("neotest")
 		local which_key = require("which-key")
 
-		neotest.setup({ adapters = adapters })
+		neotest.setup({ adapters = adapters, output = { enabled = false, open_on_run = false } })
 
 		which_key.add({
 			{ "<leader>t", desc = "Test execution" },
@@ -33,7 +33,6 @@ return {
 				end,
 				desc = "Debug nearest tests",
 			},
-			{ "<leader>tO", neotest.output.open, desc = "Open output" },
 			{ "<leader>to", neotest.output_panel.open, desc = "Open output panel" },
 		})
 	end,
