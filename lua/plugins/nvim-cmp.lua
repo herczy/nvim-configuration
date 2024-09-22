@@ -41,12 +41,7 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-x>"] = cmp.mapping.abort,
-					["<esc>"] = function()
-						-- Escape should emulate default escape behavior.
-						cmp.mapping.abort()
-						vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, true, true), "n", false)
-					end,
+					["<esc>"] = cmp.mapping.abort,
 					-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					["<TAB>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
