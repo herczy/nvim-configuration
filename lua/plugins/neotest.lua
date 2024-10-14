@@ -11,7 +11,7 @@ return {
 		local adapters = {
 			require("neotest-python")({
 				dap = { justMyCode = false },
-				args = { "--log-level", "DEBUG", "-vv" },
+				args = { "--log-level", "DEBUG", "-vv", "--color=no" },
 				runner = "pytest",
 				python = "python",
 				pytest_discover_instances = true,
