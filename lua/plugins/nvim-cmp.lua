@@ -25,7 +25,8 @@ return {
 			local cmp = require("cmp")
 			local vs = require("luasnip.loaders.from_vscode")
 
-			vs.lazy_load()
+      -- most snippets are annoying and get in the way
+      -- vs.lazy_load()
 			vs.lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets/" } })
 
 			cmp.setup({
