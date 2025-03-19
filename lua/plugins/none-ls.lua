@@ -8,6 +8,7 @@ return {
 				nl.builtins.formatting.stylua,
 				nl.builtins.formatting.black,
 				nl.builtins.formatting.isort,
+				nl.builtins.diagnostics.clazy,
 				nl.builtins.diagnostics.mypy,
 			},
 		})

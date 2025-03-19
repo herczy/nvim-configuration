@@ -40,6 +40,7 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			config.pyright.setup({ capabilities = capabilities })
+      config.clangd.setup({})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
