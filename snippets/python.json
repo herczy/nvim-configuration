@@ -18,5 +18,9 @@
   "paramspec": {
     "prefix": "paramspec",
     "body": "${1:P} = ParamSpec(\"${2:$1}\")"
+  },
+  "main": {
+    "prefix": "main",
+    "body": "@click.command()\ndef main() -> None:\n    pass\n\nif __name__ == '__main__':\n    exit(main())\n"
   }
 }
