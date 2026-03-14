@@ -39,8 +39,16 @@ return {
 					end,
 				},
 				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+          completion = {
+            border = "rounded", -- Options: "single", "double", "rounded", "none"
+            winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+            scrollbar = false,
+            side_padding = 1,
+          },
+          documentation = {
+            border = "rounded",
+            winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+          },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
