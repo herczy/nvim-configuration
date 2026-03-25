@@ -6,6 +6,7 @@ return {
 		local config = require("nvim-treesitter.configs")
 		config.setup({
 			auto_install = true,
+      ignore_install = { "dockerfile" },
 			sync_install = false,
 			highlight = { enable = true },
 			indent = { enable = false },
